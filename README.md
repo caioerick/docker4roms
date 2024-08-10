@@ -89,15 +89,19 @@ cd projects; mkdir upwelling
 cd upwelling
 cp ../build_roms.sh .
 cp ../../roms_src/ROMS/External/roms_upwelling.in  .
-cp ../../roms_src/ROMS/External/varinfo.dat .
+cp ../../roms_src/ROMS/External/varinfo.yaml .
 cp ../../roms_src/ROMS/Include/upwelling.h .
 
 # compile the model:
 sudo bash build_roms.sh
 
-# change VARNAME = varinfo.dat in the roms_upwelling.in
+# change VARNAME = varinfo.yaml in the roms_upwelling.in
 nano roms_upwelling.in
 
 # now just run the model:
 sudo ./romsS < roms_upwelling.in
+
+# ...or execute creating a log file
+sudo ./romsS < roms_upwelling.in > status.log
+
 ```
